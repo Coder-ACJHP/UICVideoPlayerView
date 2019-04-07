@@ -10,12 +10,6 @@ import UIKit
 
 class DummyViewController: UIViewController, UICVideoPlayerViewDelegate {
     
-    
-    func nextLink(in section: String) -> String {
-        return youtubeVideoLink
-    }
-    
-    
     func dismiss(_ videoView: UICVideoPlayerView) {
         handleTap()
     }
