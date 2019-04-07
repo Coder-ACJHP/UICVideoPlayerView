@@ -323,7 +323,7 @@ class UICVideoPlayerView: UIView {
             playerItem?.addObserver(self, forKeyPath: KeyPath.Status.rawValue, options: [.old, .new], context: nil)
             
             // Add observer for tracking player playback ends
-            NotificationCenter.default.addObserver(self, selector: #selector(playerEndedPlaying), name: Notification.Name("AVPlayerItemDidPlayToEndTimeNotification"), object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(playerEndedPlaying), name: .AVPlayerItemDidPlayToEndTime, object: nil)
             
             // Start playing video
             self.playVideo()
@@ -440,6 +440,7 @@ class UICVideoPlayerView: UIView {
             self!.player?.seek(to: CMTime.zero)
             self!.playPauseButton.setImage(UIImage(named: "replay"), for: .normal)
             self!.isPlaying = false
+            self!.handleTap()
         }
     }
     
