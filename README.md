@@ -5,7 +5,7 @@ Video player with play, pause, forward, rewind, seek, mute functionalities for I
 <img src="https://github.com/Coder-ACJHP/UICVideoPlayerView/blob/master/videoPlayer.gif" width=275 height="550">
 
 ## How to use?
-1 - Download `UICVideoPlayerView` with it's assets and import it into your project. (Single .swift file and assests)<br>
+1 - Download `UICVideoPlayerView.swift` file (inside UICVideoPlayer folder) with it's assets (inside Assets.xcassets folder) and import it into your project. (Single .swift file and assests "icons")<br>
 2 - Allow your application to support arbitrary loads from `info.plist`to allow `http` requests<br>
 3 - Setup `UICVideoPlayerView` and add it to your view
 
@@ -25,6 +25,7 @@ func dismiss(_ videoView: UICVideoPlayerView) {
 // Dismiss videoPlayer view here or what ever you want
 }
 ```
+Note: For more information browse example project (DummyViewController)
 
 No need to any other thing, so it's features like :
 - When the video fail to load it shows error message.
