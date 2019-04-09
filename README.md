@@ -33,9 +33,9 @@ No need to any other thing, so it's features like :
 - Shows replay button when video finished and resets slider.
 - When changing video link it will prepare and update itself immediatly.
 - Shows loading spinner depended on buffer status.
-- You can share video link to social media and other chanels (new)
-- You can change settings from settings context menu (new)
-Note: This project is sample so only "dismiss & cancel" option is working in menu others not!
+- You can share video link to social media and other chanels (new).
+- You can change settings from settings context menu (new).<br>
+###### Note: This project is sample so only "dismiss & cancel" option is working in menu others not!
 
 ### Requirements
 Xcode 9 or later <br>
