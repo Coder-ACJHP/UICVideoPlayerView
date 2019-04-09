@@ -40,6 +40,7 @@ class DummyViewController: UIViewController, UICVideoPlayerViewDelegate {
         let videoLayerFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: calculatedHeight)
         uICVideoPlayer = UICVideoPlayerView(frame: videoLayerFrame)
         uICVideoPlayer.videoLink = sampleVideoLink
+        uICVideoPlayer.ownerViewController = self
         uICVideoPlayer.delegate = self
         uICVideoPlayer.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(uICVideoPlayer)

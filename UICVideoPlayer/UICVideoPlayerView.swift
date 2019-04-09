@@ -31,6 +31,8 @@ class UICVideoPlayerView: UIView {
     private var lastVolumeSliderPosition: Float = 0
     private var isControlContainerViewShowing: Bool = false
     
+    private var contextMenu: ContextMenu!
+    
     private lazy var playPauseButton: UIButton = {
         let btn = UIButton(type: .system)
         let icon = UIImage(named: "pause")?.withRenderingMode(.alwaysTemplate)
@@ -81,6 +83,28 @@ class UICVideoPlayerView: UIView {
         btn.setImage(icon, for: .normal)
         btn.tintColor = .white
         btn.tag = 4
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.addTarget(self, action: #selector(handlePress(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
+    private lazy var menuButton: UIButton = {
+        let btn = UIButton(type: .system)
+        let icon = UIImage(named: "menu")?.withRenderingMode(.alwaysTemplate)
+        btn.setImage(icon, for: .normal)
+        btn.tintColor = .white
+        btn.tag = 6
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.addTarget(self, action: #selector(handlePress(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
+    private lazy var shareButton: UIButton = {
+        let btn = UIButton(type: .system)
+        let icon = UIImage(named: "share")?.withRenderingMode(.alwaysTemplate)
+        btn.setImage(icon, for: .normal)
+        btn.tintColor = .white
+        btn.tag = 5
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addTarget(self, action: #selector(handlePress(_:)), for: .touchUpInside)
         return btn
@@ -162,6 +186,7 @@ class UICVideoPlayerView: UIView {
         }
     }
     
+    public var ownerViewController: UIViewController?
     public weak var delegate: UICVideoPlayerViewDelegate?
     
     override init(frame: CGRect) {
@@ -172,6 +197,8 @@ class UICVideoPlayerView: UIView {
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
         
         controlContainerView.addSubview(dismissButton)
+        controlContainerView.addSubview(menuButton)
+        controlContainerView.addSubview(shareButton)
         controlContainerView.addSubview(loadingSpinner)
         controlContainerView.addSubview(rewindButton)
         controlContainerView.addSubview(playPauseButton)
@@ -198,11 +225,23 @@ class UICVideoPlayerView: UIView {
             controlContainerView.bottomAnchor.constraint(equalTo: bottomAnchor),
             controlContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             
-            // Rewind button constraints
+            // Dismiss button constraints
             dismissButton.widthAnchor.constraint(equalToConstant: 20),
             dismissButton.heightAnchor.constraint(equalToConstant: 20),
             dismissButton.leadingAnchor.constraint(equalTo: controlContainerView.leadingAnchor, constant: 12),
             dismissButton.topAnchor.constraint(equalTo: controlContainerView.topAnchor, constant: 12),
+            
+            // Menu button constraints
+            menuButton.widthAnchor.constraint(equalToConstant: 20),
+            menuButton.heightAnchor.constraint(equalToConstant: 20),
+            menuButton.trailingAnchor.constraint(equalTo: controlContainerView.trailingAnchor, constant: -12),
+            menuButton.topAnchor.constraint(equalTo: controlContainerView.topAnchor, constant: 12),
+            
+            // Share button constraints
+            shareButton.widthAnchor.constraint(equalToConstant: 20),
+            shareButton.heightAnchor.constraint(equalToConstant: 20),
+            shareButton.trailingAnchor.constraint(equalTo: menuButton.trailingAnchor, constant: -24),
+            shareButton.topAnchor.constraint(equalTo: controlContainerView.topAnchor, constant: 12),
             
             // Rewind button constraints
             rewindButton.widthAnchor.constraint(equalToConstant: 35),
@@ -444,6 +483,15 @@ class UICVideoPlayerView: UIView {
         }
     }
     
+    private func shareVideoLink() {
+        let message = "Shared from UICVideoPlayer"
+        if let link = URL(string: videoLink) {
+            let sharableObjects: [Any] = [message, link]
+            let activityCOntroller = UIActivityViewController(activityItems: sharableObjects, applicationActivities: nil)
+            ownerViewController?.present(activityCOntroller, animated: true, completion: nil)
+        }
+    }
+    
     // Mark: - Action event handlers
     
     @objc private func handleTap() {
@@ -466,6 +514,11 @@ class UICVideoPlayerView: UIView {
         case 4:
             pauseVideo()
             delegate?.dismiss(self)
+        case 5:
+            shareVideoLink(); break;
+        case 6:
+            contextMenu = ContextMenu(frame: .zero)
+            contextMenu.showContextMenu(); break;
         default: break;
         }
     }

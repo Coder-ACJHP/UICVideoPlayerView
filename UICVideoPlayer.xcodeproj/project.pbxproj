@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		587C7B39225CA65000DE810F /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587C7B38225CA65000DE810F /* ContextMenu.swift */; };
 		81F99BEC225A6F9E00F873C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F99BEB225A6F9E00F873C8 /* AppDelegate.swift */; };
 		81F99BEE225A6F9E00F873C8 /* DummyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F99BED225A6F9E00F873C8 /* DummyViewController.swift */; };
 		81F99BF1225A6F9E00F873C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81F99BEF225A6F9E00F873C8 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		587C7B38225CA65000DE810F /* ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
 		81F99BE8225A6F9E00F873C8 /* UICVideoPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UICVideoPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81F99BEB225A6F9E00F873C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81F99BED225A6F9E00F873C8 /* DummyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			children = (
 				81F99BEB225A6F9E00F873C8 /* AppDelegate.swift */,
 				81F99BED225A6F9E00F873C8 /* DummyViewController.swift */,
+				587C7B38225CA65000DE810F /* ContextMenu.swift */,
 				81F99C0B225A72FD00F873C8 /* UICVideoPlayerView.swift */,
 				81F99BEF225A6F9E00F873C8 /* Main.storyboard */,
 				81F99BF4225A6F9F00F873C8 /* LaunchScreen.storyboard */,
@@ -202,6 +205,7 @@
 			files = (
 				81F99BEE225A6F9E00F873C8 /* DummyViewController.swift in Sources */,
 				81F99C0C225A72FD00F873C8 /* UICVideoPlayerView.swift in Sources */,
+				587C7B39225CA65000DE810F /* ContextMenu.swift in Sources */,
 				81F99BEC225A6F9E00F873C8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
