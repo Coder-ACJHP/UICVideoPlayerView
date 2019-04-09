@@ -2,7 +2,7 @@
 Video player with play, pause, forward, rewind, seek, mute functionalities for IOS
 
 ## Screen shot (.gif)
-<img src="https://github.com/Coder-ACJHP/UICVideoPlayerView/blob/master/videoPlayer.gif" width=274 height="734">
+<img src="https://github.com/Coder-ACJHP/UICVideoPlayerView/blob/master/videoPlayer.gif" width=274 height="584">
 
 ## How to use?
 1 - Download `UICVideoPlayerView.swift` file (inside UICVideoPlayer folder) with it's assets (inside Assets.xcassets folder) and import it into your project. (Single .swift file and assests "icons")<br>
@@ -33,6 +33,9 @@ No need to any other thing, so it's features like :
 - Shows replay button when video finished and resets slider.
 - When changing video link it will prepare and update itself immediatly.
 - Shows loading spinner depended on buffer status.
+- You can share video link to social media and other chanels (new)
+- You can change settings from settings context menu (new)
+Note: This project is sample so only "dismiss & cancel" option is working in menu others not!
 
 ### Requirements
 Xcode 9 or later <br>
