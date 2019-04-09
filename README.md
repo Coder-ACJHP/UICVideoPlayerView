@@ -2,7 +2,7 @@
 Video player with play, pause, forward, rewind, seek, mute functionalities for IOS
 
 ## Screen shot (.gif)
-<img src="https://github.com/Coder-ACJHP/UICVideoPlayerView/blob/master/videoPlayer.gif" width=275 height="550">
+<img src="https://github.com/Coder-ACJHP/UICVideoPlayerView/blob/master/videoPlayer.gif" width=374 height="834">
 
 ## How to use?
 1 - Download `UICVideoPlayerView.swift` file (inside UICVideoPlayer folder) with it's assets (inside Assets.xcassets folder) and import it into your project. (Single .swift file and assests "icons")<br>
