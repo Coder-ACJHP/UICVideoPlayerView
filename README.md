@@ -29,6 +29,7 @@ Note: For more information browse example project (DummyViewController)
 
 No need to any other thing, so it's features like :
 - When the video fail to load it shows error message.
+- It shows streaming progress
 - When video load will start to play.
 - Shows replay button when video finished and resets slider.
 - When changing video link it will prepare and update itself immediatly.
