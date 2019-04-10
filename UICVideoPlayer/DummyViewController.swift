@@ -20,7 +20,7 @@ class DummyViewController: UIViewController, UICVideoPlayerViewDelegate {
     lazy var startFrame = CGRect(x: view.frame.width - 5, y: view.frame.height, width: 5, height: 5)
     
     let sampleVideoLink = "http://file-examples.com/wp-content/uploads/2017/04/file_example_MP4_480_1_5MG.mp4"
-    let youtubeVideoLink = "http://file-examples.com/wp-content/uploads/2017/04/file_example_MP4_1920_18MG.mp4"
+    let youtubeVideoLink = "http://www.html5videoplayer.net/videos/toystory.mp4"
     
     lazy var animationView: UIView = {
         
@@ -39,7 +39,7 @@ class DummyViewController: UIViewController, UICVideoPlayerViewDelegate {
         let calculatedHeight = self.view.frame.width * 9 / 16
         let videoLayerFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: calculatedHeight)
         uICVideoPlayer = UICVideoPlayerView(frame: videoLayerFrame)
-        uICVideoPlayer.videoLink = sampleVideoLink
+        uICVideoPlayer.videoLink = youtubeVideoLink
         uICVideoPlayer.ownerViewController = self
         uICVideoPlayer.delegate = self
         uICVideoPlayer.translatesAutoresizingMaskIntoConstraints = false

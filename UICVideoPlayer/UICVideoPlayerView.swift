@@ -144,7 +144,7 @@ class UICVideoPlayerView: UIView {
     private var timeSlider: UISlider = {
         let slider = UISlider(frame: .zero)
         slider.minimumTrackTintColor = .red
-        slider.maximumTrackTintColor = .white
+        slider.maximumTrackTintColor = .lightGray
         slider.setThumbImage(UIImage(named: "sliderThumb"), for: .normal)
         slider.translatesAutoresizingMaskIntoConstraints = false
         slider.addTarget(self, action: #selector(handleSliding(_:)), for: .valueChanged)
@@ -178,6 +178,33 @@ class UICVideoPlayerView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    private lazy var setupBufferLoadAnimation: CABasicAnimation = {
+        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        basicAnimation.fromValue = 0
+        basicAnimation.repeatCount = 0
+        basicAnimation.fillMode = .forwards
+        basicAnimation.isRemovedOnCompletion = false
+        return basicAnimation
+    }()
+    
+    private lazy var bufferLoadRangeLayer: CAShapeLayer = {
+        let animationLayer = CAShapeLayer()
+        animationLayer.lineWidth = 3
+        animationLayer.strokeColor = UIColor.white.cgColor
+        animationLayer.lineCap = .square
+        animationLayer.strokeEnd = 0
+        
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: timeSlider.bounds.minX + 3, y: timeSlider.bounds.midY))
+        path.addLine(to: CGPoint(x: timeSlider.bounds.maxX, y: timeSlider.bounds.midY))
+        animationLayer.path = path.cgPath
+        timeSlider.layer.insertSublayer(animationLayer, at: 0)
+        animationLayer.add(setupBufferLoadAnimation, forKey: "strokeEndAnimation")
+        return animationLayer
+    }()
+    
+
     
     public var videoLink: String = "" {
         didSet {
@@ -414,6 +441,20 @@ class UICVideoPlayerView: UIView {
                 let minuteText = String(format: "%02d", Int(seconds) / 60)
                 DispatchQueue.main.async {[weak self] in
                     self?.videoLenghtLabel.text = "\(minuteText):\(secondText)"
+                    
+                }
+                
+                if let timeRangeArray = player?.currentItem?.loadedTimeRanges {
+                    let aTimeRange: CMTimeRange = timeRangeArray.first!.timeRangeValue
+                    let startTime = CMTimeGetSeconds(aTimeRange.start)
+                    let loadedDuration = CMTimeGetSeconds(aTimeRange.duration)
+                    
+                    DispatchQueue.main.async {[weak self] in
+                        let bufferLoadedTime: CGFloat = CGFloat(startTime + loadedDuration) / 100
+                        if bufferLoadedTime <= 1.0 {
+                            self?.bufferLoadRangeLayer.strokeEnd = bufferLoadedTime
+                        }
+                    }
                 }
             }
         }
